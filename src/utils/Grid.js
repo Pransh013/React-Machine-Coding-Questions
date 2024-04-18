@@ -16,6 +16,6 @@ export function shuffleArr(arr) {
   return arr;
 }
 
-const arr = generateArr(4);
+const arr = generateArr(8);
 
 export const res = shuffleArr(arr);
