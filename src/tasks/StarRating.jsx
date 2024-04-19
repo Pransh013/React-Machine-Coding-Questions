@@ -35,7 +35,7 @@ const StarRating = () => {
         return newReviewArr;
       });
       setTotalReviews((prev) => prev + 1);
-    }, 3000);
+    }, 2000);
     return () => clearTimeout(activeTimer);
   }, [active]);
 

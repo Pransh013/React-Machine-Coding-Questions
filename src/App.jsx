@@ -5,9 +5,9 @@ import TrafficLight from "./tasks/TrafficLight";
 const App = () => {
   return (
     <div>
+      <StarRating/>
       <GridGame />
       <TrafficLight />
-      <StarRating/>
     </div>
   );
 };
