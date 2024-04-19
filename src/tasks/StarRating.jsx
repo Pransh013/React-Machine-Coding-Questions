@@ -1,5 +1,6 @@
 import { Star } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import ReviewBar from "../components/ReviewBar";
 
 const stars = [1, 2, 3, 4, 5];
 
@@ -40,9 +41,9 @@ const StarRating = () => {
   }, [active]);
 
   return (
-    <div className="w-full h-screen bg-gray-300 flex flex-col justify-center gap-8 items-center">
-      <h1 className="text-3xl font-bold pb-4">Star Rating</h1>
-      <div className="flex gap-4">
+    <div className="w-full h-screen bg-gray-300 flex flex-col justify-center items-center">
+      <h1 className="text-3xl font-bold pb-8">Star Rating</h1>
+      <div className="flex gap-4 border-2 bg-gray-400 rounded-full px-4 py-2">
         {stars.map((num, idx) => (
           <Star
             key={idx}
@@ -55,28 +56,21 @@ const StarRating = () => {
           />
         ))}
       </div>
+      <p className="text-lg font-semibold pb-6 pt-2">
+        {totalReviews} customer ratings
+      </p>
       <div className="flex flex-col gap-3">
         {reviewArr.map((val, idx) => (
-          <div key={idx} className="flex items-center gap-4">
-            <p className="text-lg font-semibold">{idx + 1} stars</p>
-            <ReviewBar width={totalReviews > 0 ? Math.round(val*100 / totalReviews) : 0} />
+          <div key={idx} className="w-96 flex items-center justify-between">
+            <p className="text-lg font-semibold">{idx + 1} star</p>
+            <ReviewBar
+              width={
+                totalReviews > 0 ? Math.round((val * 100) / totalReviews) : 0
+              }
+            />
           </div>
         ))}
       </div>
-    </div>
-  );
-};
-
-const ReviewBar = ({ width = 0 }) => {
-  return (
-    <div className="w-80 flex items-center gap-4">
-      <div className="w-60 h-1.5 rounded-md overflow-hidden bg-white">
-        <div
-          className="h-full bg-yellow-400"
-          style={{ width: `${width}%` }}
-        ></div>
-      </div>
-      <p className="text-black text-sm font-semibold">{width}%</p>
     </div>
   );
 };
